@@ -1,6 +1,6 @@
 {
   "name": "@interpriz/eslint-config",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "main": "eslint-config.json",
   "description": "Shared ESLint and Prettier configuration for projects.",
   "files": [

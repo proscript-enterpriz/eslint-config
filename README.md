@@ -17,4 +17,4 @@
 ## Installation
 
 ```bash
-npm install --save-dev @interpriz/eslint-config eslint prettier
+npm install --save-dev @interpriz/eslint-config eslint prettier typescript @typescript-eslint/parser
