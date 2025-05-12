@@ -1,6 +1,6 @@
 {
   "name": "@interpriz/eslint-config",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "main": "eslint-config.json",
   "description": "Shared ESLint and Prettier configuration for projects.",
   "files": [
@@ -11,7 +11,7 @@
   "author": "@interpriz",
   "license": "ISC",
   "scripts": {
-    "publish:public": "npm publish --access public"
+    "publish:public": "npm publish --tag eslint8 --access public"
   },
   "peerDependencies": {
     "eslint": "^8.56.0",
@@ -28,5 +28,8 @@
     "eslint-plugin-unused-imports": "^3.0.0",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
