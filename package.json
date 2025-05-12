@@ -1,6 +1,6 @@
 {
   "name": "@interpriz/eslint-config",
-  "version": "0.0.21",
+  "version": "0.0.25",
   "main": "eslint.config.js",
   "description": "Shared ESLint and Prettier configuration for projects.",
   "files": [
@@ -14,8 +14,8 @@
     "publish:public": "npm publish --tag latest --access public"
   },
   "peerDependencies": {
-    "eslint": "^8.23.0 || ^9.26.0",
-    "react": "^18.0.0 || ^19.1.0",
+    "eslint": "^9",
+    "react": "^19.1.0",
     "typescript": "^5.8.3"
   },
   "dependencies": {
