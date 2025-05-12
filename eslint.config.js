@@ -2,13 +2,13 @@
 import eslint from '@eslint/js';
 import tsParser from '@typescript-eslint/parser';
 import reactPlugin from 'eslint-plugin-react';
-import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import reactHooks from 'eslint-plugin-react-hooks';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
 import prettierPlugin from 'eslint-plugin-prettier';
 
 export default [
-	// Base ESLint recommended config
+	// Base ESLint recommendations
 	eslint.configs.recommended,
 
 	// TypeScript configuration
@@ -19,38 +19,64 @@ export default [
 			parserOptions: {
 				ecmaVersion: 2022,
 				sourceType: 'module',
-				project: './tsconfig.json',
-			},
-		},
+				project: './tsconfig.json'
+			}
+		}
 	},
 
 	// React configuration
 	{
 		plugins: {
 			react: reactPlugin,
-			'react-hooks': reactHooksPlugin,
+			'react-hooks': reactHooks
 		},
 		settings: {
 			react: {
-				version: 'detect',
-			},
-		},
-		rules: {
-			'react/jsx-uses-react': 'error',
-			'react/jsx-uses-vars': 'error',
-			'react/no-array-index-key': 'off',
-			'react-hooks/rules-of-hooks': 'error',
-			'react-hooks/exhaustive-deps': 'off',
-		},
+				version: 'detect'
+			}
+		}
 	},
 
 	// Import sorting and unused imports
 	{
 		plugins: {
 			'simple-import-sort': simpleImportSort,
-			'unused-imports': unusedImports,
-		},
+			'unused-imports': unusedImports
+		}
+	},
+
+	// Prettier integration
+	{
+		plugins: {
+			prettier: prettierPlugin
+		}
+	},
+
+	// Custom rules
+	{
 		rules: {
+			// Prettier rules
+			'prettier/prettier': ['error', {
+				semi: true,
+				singleQuote: true,
+				trailingComma: 'all',
+				printWidth: 80,
+				tabWidth: 2
+			}],
+
+			// React rules
+			'react/jsx-uses-react': 'error',
+			'react/jsx-uses-vars': 'error',
+			'react/no-array-index-key': 'off',
+			'react-hooks/rules-of-hooks': 'error',
+			'react-hooks/exhaustive-deps': 'off',
+
+			// Import rules
+			'import/extensions': 'off',
+			'import/no-cycle': 'off',
+			'import/no-duplicates': ['error', { considerQueryString: true }],
+
+			// Sorting rules
 			'simple-import-sort/exports': 'error',
 			'simple-import-sort/imports': [
 				'error',
@@ -60,51 +86,32 @@ export default [
 						['^\\u0000'],
 						['^@?\\w'],
 						['^'],
-						['^\\.'],
-					],
-				},
+						['^\\.']
+					]
+				}
 			],
+
+			// Unused imports
 			'unused-imports/no-unused-imports': 'error',
 			'unused-imports/no-unused-vars': 'off',
-		},
-	},
 
-	// TypeScript specific rules
-	{
-		rules: {
+			// TypeScript rules
 			'@typescript-eslint/no-unused-vars': [
 				'warn',
 				{
 					argsIgnorePattern: '^_',
 					varsIgnorePattern: '^_',
-					caughtErrorsIgnorePattern: '^_',
-				},
+					caughtErrorsIgnorePattern: '^_'
+				}
 			],
 			'@typescript-eslint/no-unused-expressions': 'error',
 			'@typescript-eslint/no-explicit-any': 'warn',
 			'@typescript-eslint/no-non-null-assertion': 'off',
 			'@typescript-eslint/no-shadow': ['error', { ignoreTypeValueShadow: true }],
-		},
-	},
 
-	// Prettier integration
-	{
-		plugins: {
-			prettier: prettierPlugin,
-		},
-		rules: {
-			'prettier/prettier': 'error',
-		},
-	},
-
-	// Global rules
-	{
-		rules: {
+			// General rules
 			'no-console': ['warn', { allow: ['warn', 'error'] }],
-				'no-param-reassign': 'off',
-			'import/extensions': 'off',
-			'import/no-cycle': 'off',
-			'import/no-duplicates': ['error', { considerQueryString: true }],
-		},
-	},
+			'no-param-reassign': 'off'
+		}
+	}
 ];
