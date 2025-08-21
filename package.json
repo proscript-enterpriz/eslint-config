@@ -1,6 +1,6 @@
 {
   "name": "@interpriz/eslint-config",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "main": "eslint.config.js",
   "description": "Shared ESLint and Prettier configuration for projects.",
   "files": [
